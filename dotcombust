@@ -1,0 +1,4 @@
+﻿declare and instantlists the gamehelper instance varible,named helper;
+declare and instantlists an arraylists to hold the list of dotcoms called it dotcomlist.
+declare an int varible to hold the number of user guesser
+so that we can give the user a score at the end of the game.
