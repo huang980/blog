@@ -1,0 +1,64 @@
+<?php
+header("content-type:text/html;charset="utf8");
+$conn=mysqli_connect("localhost","123456","123456","login");
+mysqli_set_charset($conn,'utf8');
+if($conn){
+	switch($_GET['action']){
+	case 'register':
+	$name=$_POST['name'];
+	$userspassword=$_POST['userspassword'];
+	$sql="insert into login(usersname,userspassword)values($name,$userspassword);
+	$rw=mysqli_query($conn,$sql);
+	if($rw>0){
+	echo"<script>alert('添加成功');</script>
+	}
+	else{
+	echo"<script>alert('添加失败");</script>
+	}
+	header('Location:LoginView.php');
+	break;
+	case 'del':
+	$id=$_GET['id'];
+	$sql="delete from user where id='$id'";
+	$rw=mysqli_query($conn,$sql);
+	if($rw>0){
+	echo"<script>alert('删除成功');</script>";
+	}else{
+	echo"<script>alert('删除失败');</script>";
+	}
+	header('Location:AdminIndex.php');
+	break;
+	default:
+	header('Location:AdminIndex.php');
+	break;
+	}
+	}
+	}else{
+		die('数据库连接失败'.mysqli_connect_error());
+	}
+	
+	
+	/* case 'admin':
+	$name=$_POST['name'];
+	$sql="insert into login(usersname)values($name);
+	$rw=mysqli_query($conn,$sql);
+	if($rw>0){
+	echo"<script>alert('添加成功');</script>
+	}else{
+	echo"<script>alert('添加失败");</script>
+	
+	header('Location:index.php');
+	break;
+	case 'article':
+	$title=$_POST['title'];
+	$article=$_POST['article'];
+	$author=$_POST['author'];
+	$sql="insert into login(usersname,userspassword)values($title,$article,$author);
+	$rw=mysqli_query($conn,$sql);
+	if($rw>0){
+	echo"<script>alert('添加成功');</script>
+	}else{
+	echo"<script>alert('添加失败");</script>
+	} */
+	?>
+	
