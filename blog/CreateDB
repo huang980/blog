@@ -1,0 +1,32 @@
+<?php
+header('Content-type:text/html;charset=utf-8');
+$servername="localhost";
+$username="123456";
+$password="123456";
+$conn=mysqli_connect($servername,$username,$password);
+mysqli_set_charset($conn,'utf8');
+if(!$conn){
+die("连接失败:".mysqli_connect_error());
+}
+$sql="CREATE DATABASE uer";
+if(mysqli_query($conn,$sql)){
+echo"用户数据库创建成功！";
+}else{
+echo"用户数据库创建失败！".mysqli_error($conn);
+}
+
+$sql="CREATE DATABASE admin";
+if(mysqli_query($conn,$sql)){
+echo"管理员数据库创建成功！";
+}else{
+echo"管理员数据库创建失败！".mysqli_error($conn);
+}
+
+$sql="CREATE DATABASE login";
+if(mysqli_query($conn,$sql)){
+echo"登录数据库创建成功！";
+}else{
+echo"登数据库创建失败！".mysqli_error($conn);
+}
+mysqli_close($conn);
+?>
