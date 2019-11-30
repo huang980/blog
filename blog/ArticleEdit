@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+header("content-type:text/html;charset=utf8");
+$conn=mysqli_connect("localhost","123456","123456","user");
+
+mysqli_set_charset($conn,"utf8");
+$id=$_GET['id'];
+$sql_select="select * from user where id='$id'";
+$st=mysqli_query($conn,$sql_select);
+if($st>0){
+$user=mysqli_fetch_assoc($st);
+}
+else{
+die("没有找到相应的id:{$_GET['id']}");
+}
+?>
+<h2>修改文章信息</h2>
+<form action="ArticleAction.php?action=edit" method="post">
+<input type="hidden" name="id" value="<?php echo $user['id'];?>'>
+<table>
+<tr>
+<td>标题</td>
+<td><input type="text" name="title" value="<?php echo $user['title'];?></td>
+</tr>
+<tr>
+<td>文章内容</td></tr>
+<td><input type="file" name="article" value="<?php echo $user['article'];?></td>
+<tr>
+<td>作者</td>
+<td><input type="text" name="author" value="<?php echo $user['author'];?></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" value="修改"></td>
+<td><input type="reset" value="重置"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+

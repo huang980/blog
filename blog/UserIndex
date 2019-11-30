@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+function doDel(id){
+if(confirm('确认删除？'){
+window.location='ArticleAction.php?action=del&id='+id;
+}
+}
+</script>
+</head>
+<body>
+<title>用户页面</title>
+<table width="350" border="1" cellspacing="0">
+<tr>
+<th>ID</th>
+<th>标题</th>
+<th>文章</th>
+<th>作者</th>
+<th>操作</th>
+</tr>
+<?php
+header("content-type:text/html;charset=utf8");
+$conn=connect("localhost","123456","123456","user");
+mysqli_set_charset($conn,"utf8");
+$sql_select="select*from user";
+foreach($conn->query($sql_select) as $row){
+echo"<tr>";
+echo"<th>{$row['id']}</th>";
+echo"<th>{$row['title']}</th>";
+echo"<th>{$row['article']}</th>";
+echo"<th>{$row['author']}</th>";
+echo"<td>
+	<a href='edit.php?id={$row['id']}'>修改</a>
+	<a href='javascript:void(0);'onclick='doDel({$row['id']}'>删除</a>
+	</td>
+	echo"</tr>";
+}
+?>
+</table>
+</body>
+</html>

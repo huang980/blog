@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>文章添加页面</title>
+</head>
+<body>
+<form><action="action.php"?action=article" method="post">
+<table>
+<tr>
+<td>标题</td>
+<td><input type="text" name="name"></td>
+</tr>
+<tr>
+<td>文章内容</td>
+<td><input type="file" name="article"></td>
+</tr>
+<tr>
+<td>作者</td>
+<td><input type="text" name="author"></td>
+</tr>
+<tr>
+<td><input type="submit" value="确认"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
